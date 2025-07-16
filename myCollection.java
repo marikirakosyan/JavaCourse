@@ -2,7 +2,7 @@ import java.util.*;
 
 // the class has to implement the itertor class and for element E to iterate over. Element E is inside each 
 // node so when  
-public class myCollection<E>{
+public class myCollection<E> extends myIterator{
     // inner class is a class in the class that only is seen in current class, only known in this scope
     
 
@@ -164,7 +164,7 @@ public class myCollection<E>{
         System.out.println();
     }
 
-    private class myIterator implements Iterator<E>{
+    private class myIterator<E> implements Iterator<E>{
 
         // need to override has next and next
 
@@ -179,11 +179,14 @@ public class myCollection<E>{
         }
 
         @Override
-        public Node next() { // next returns the next element
-            if (head.next != null){
-                return head.next;
+        public E next() { // next returns the next element and moves forward
+            if (hasNext()){
+                E next = head.data;
+                head = head.next; // shifting to the next object
+                return next;
             }
-
+            throw new NoSuchElementException();
+        
         }
 
 
