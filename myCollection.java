@@ -90,7 +90,7 @@ public class myCollection<E> implements Iterable<E>{ // iterable lets you write 
                 System.out.println("There is no space ");
     
             }
-        };
+        }
 
 
     }
