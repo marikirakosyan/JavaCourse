@@ -20,7 +20,7 @@ public class myCollection<E> implements Iterable<E>{ // iterable lets you write 
         Node current = head; // we start with this, local variable
 
         // testing
-        System.out.println("head is: " + head.data);
+        //System.out.println("head is: " + head);
 
 
         for(int i = 0; i<n; i++){ // we get 10 elements
@@ -90,7 +90,7 @@ public class myCollection<E> implements Iterable<E>{ // iterable lets you write 
                 System.out.println("There is no space ");
     
             }
-        } throw new NullPointerException("this is null");
+        };
 
 
     }
