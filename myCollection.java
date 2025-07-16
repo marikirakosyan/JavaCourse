@@ -2,7 +2,7 @@ import java.util.*;
 
 // the class has to implement the itertor class and for element E to iterate over. Element E is inside each 
 // node so when  
-public class myCollection<E> extends myIterator{
+public class myCollection<E> implements Iterable<E>{ // iterable lets you write the iterator method
     // inner class is a class in the class that only is seen in current class, only known in this scope
     
 
@@ -10,12 +10,17 @@ public class myCollection<E> extends myIterator{
 
 
     public myCollection(int n) { 
+
+
         // we need to make list with n nodes with nodes with reference to null
 
         // when we put head in cuntructor as new we know that it will never be null
         head = new Node(); // head needs to be first
         
         Node current = head; // we start with this, local variable
+
+        // testing
+        System.out.println("head is: " + head.data);
 
 
         for(int i = 0; i<n; i++){ // we get 10 elements
@@ -70,20 +75,22 @@ public class myCollection<E> extends myIterator{
 
         Node current = head;
 
-        if(this.space()){
-
-            while(current.next != null){
-                if(current.data == null){
-                    current.data = newElement;
-                    break; // we only want to insert once
+        if(current != null){ // checking if the node exicts
+            if(this.space()){
+                while(current.next != null){
+                    if(current.data == null){ // if there is data inside the current node
+                        current.data = newElement; 
+                        break; // we only want to insert once
+                    }
+                    current = current.next;
                 }
-                current = current.next;
+                // System.out.println("done!");
+    
+            }else{
+                System.out.println("There is no space ");
+    
             }
-
-        }else{
-            System.out.println("There is no space ");
-
-        }
+        } throw new NullPointerException("this is null");
 
 
     }
@@ -164,26 +171,45 @@ public class myCollection<E> extends myIterator{
         System.out.println();
     }
 
-    private class myIterator<E> implements Iterator<E>{
+    // first step
+
+    private class myIterator implements Iterator<E>{ // itertor for next and has next
+
+
+        // temporary variable that holds head to use to iteratte, we dont want to change head
+        // we have to change temporrary variable
+
+        // it starts on the first
+        Node temp = head;
 
         // need to override has next and next
+
+        // first - temp - head -> can be null therfore hasNext must check temp - and not temp.next
+
+
+        // override second
 
         @Override
         public boolean hasNext() {
 
-            if (head.next != null){ // should we use head here?
-                return true;
-            }
-            return false;
+            // checks the one we are at not the next one
+            // it needs to be something for it to have possibility to have a next one?
+            System.out.println("this is temp right now has value " + temp!=null);
+            
+            return temp!=null; // true if not null
+    
         
         }
 
         @Override
-        public E next() { // next returns the next element and moves forward
-            if (hasNext()){
-                E next = head.data;
-                head = head.next; // shifting to the next object
-                return next;
+        public E next() { // next returns the current element and makes temp -> temp.next (moves arrow to next node)
+            // the iterator iterartes over whatever is insdie <> - the elements
+            if (hasNext()){ 
+                E thisData = temp.data;
+                temp = temp.next; // shifting to the next object
+                System.out.println("this elements data is: " + thisData);
+                System.out.println("next node is: " + temp);
+                return thisData;
             }
             throw new NoSuchElementException();
         
@@ -191,6 +217,12 @@ public class myCollection<E> extends myIterator{
 
 
 
+    }
+
+
+    @Override
+    public Iterator<E> iterator() {
+        return new myIterator();
     }
 }
 

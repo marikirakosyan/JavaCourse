@@ -63,15 +63,13 @@ public class task1 {
 
         // myC.printCount();
 
-       
+        // myC.insert("a");
 
-        myC.insert("a");
+        // myC.insert("b");
 
-        myC.insert("b");
+        //myC.insert("c");
 
-        myC.insert("c");
-
-        System.out.println(myC.count());  // recursive , we dont call head as argument because is inside the class
+        // System.out.println(myC.count());  // recursive , we dont call head as argument because is inside the class
 
         // myC.remove("a");
 
@@ -81,7 +79,7 @@ public class task1 {
 
         
     /* 
-        for (int i = 1; i<=20; i++){
+        for (int i = 1; i<=10; i++){
             myC.insert("a");
         }
 
@@ -89,10 +87,30 @@ public class task1 {
 
     */
 
+    // main to test iterator 
+
+    for (int i= 0; i<=9; i++){
+        myC.insert("a");
+    }
+
+    // new it myIterator = myIterator<E>;
+
+    /* 
+    while (myC.iterator().hasNext()){
+        System.out.println(myC.iterator().next());
+    }
+    */
+
+    for(String element:myC){ // myCollection<String> myC -> String elemenets to iterate over
+
+        System.out.println("i am iterating over " + element);
+
+    }
 
 
     }
 
-     
+
+
 }
 
