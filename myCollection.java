@@ -95,6 +95,17 @@ public class myCollection<E> implements Iterable<E>{ // iterable lets you write 
 
     }
 
+    public insertOnIndex(E ref, int n){
+        Node current = head;
+        int counter= 0;
+
+        for(E :myCollection){
+            
+
+        }
+
+    }
+
     public void remove(E ref) {
         // we want to remove a referance E
         // element is something that is in a node
@@ -169,6 +180,22 @@ public class myCollection<E> implements Iterable<E>{ // iterable lets you write 
             current = current.next;
         }
         System.out.println();
+    }
+
+    public int factCountFunc(){
+        // should call the recursive method
+        // 4! = 4 * 3 * 2 * 1
+        recursiveFactFunc(0);
+
+
+    }
+
+    private int recursiveFactFunc(int i){
+
+        if(i>1){
+            return recursiveFactFunc(i) * recursiveFactFunc(i-1);
+        }
+
     }
 
     // first step
