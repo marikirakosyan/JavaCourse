@@ -124,6 +124,9 @@ public class myCollection<E> implements Iterable<E>{ // iterable lets you write 
 
     }
 
+   
+
+
     // recursive, wants to count amount of elements that are not null
     public int count(){
         // we make the recursion with nodes, the nodes will be arguments for recursive method
@@ -182,22 +185,7 @@ public class myCollection<E> implements Iterable<E>{ // iterable lets you write 
         System.out.println();
     }
 
-    public int factCountFunc(){
-        // should call the recursive method
-        // 4! = 4 * 3 * 2 * 1
-        recursiveFactFunc(0);
-
-
-    }
-
-    private int recursiveFactFunc(int i){
-
-        if(i>1){
-            return recursiveFactFunc(i) * recursiveFactFunc(i-1);
-        }
-
-    }
-
+   
     // first step
 
     private class myIterator implements Iterator<E>{ // itertor for next and has next
