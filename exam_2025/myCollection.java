@@ -1,3 +1,4 @@
+package exam_2025;
 import java.util.*;
 
 // the class has to implement the itertor class and for element E to iterate over. Element E is inside each 
@@ -95,13 +96,13 @@ public class myCollection<E> implements Iterable<E>{ // iterable lets you write 
 
     }
 
+    //
     public insertOnIndex(E ref, int n){
         Node current = head;
         int counter= 0;
 
         for(E :myCollection){
             
-
         }
 
     }

@@ -1,3 +1,4 @@
+package exam_2025;
 
     // type <LETTER> - means its generic
     // compile time when when object made of type LETTER
@@ -49,6 +50,7 @@ public class NodesAndRecandRand {
 
     // recursion factorial func
 
+    /* 
     public static int factCountFunc(int i){
         // should call the recursive method
         // 4! = 4 * 3 * 2 * 1
@@ -58,6 +60,7 @@ public class NodesAndRecandRand {
             
             
             }
+    */
             
     private static int recursiveFactFunc(int i){
         // 4! = 4 * 3 * 2 * 1
@@ -70,7 +73,7 @@ public class NodesAndRecandRand {
             return i * recursiveFactFunc(i-1);
         }else{
             System.out.println("base case achieved at i =: " + i);
-            return 1;
+            return 1; // 1! = 1
         }
           
     }
@@ -87,7 +90,7 @@ public class NodesAndRecandRand {
             // n.factCountFunc(4);
 
             // static
-            factCountFunc(4);
+            NodesAndRecandRand.factCountFunc(4);
     
     
             // fibonacci
