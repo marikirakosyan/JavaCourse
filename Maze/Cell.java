@@ -12,6 +12,17 @@ public abstract class Cell {
     private Cell west;
     private Cell east;
 
+    // constructor 
+
+    public Cell( Cell north,Cell south, Cell west,Cell east){
+
+        this.north = north;
+        this.south = south;
+        this.west = west;
+        this.east = east;
+        
+    }
+
    
     
 }

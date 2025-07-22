@@ -1,4 +1,4 @@
-package exam_2025;
+
 
     // type <LETTER> - means its generic
     // compile time when when object made of type LETTER
@@ -90,7 +90,7 @@ public class NodesAndRecandRand {
             // n.factCountFunc(4);
 
             // static
-            NodesAndRecandRand.factCountFunc(4);
+            //NodesAndRecandRand.factCountFunc(4);
     
     
             // fibonacci
@@ -149,6 +149,10 @@ public class NodesAndRecandRand {
     
     
         //}
+
+        newMycollectionEInIns newCollection = new newMycollectionEInIns;
+
+        
     
 
 

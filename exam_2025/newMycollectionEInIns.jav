@@ -10,7 +10,7 @@ public class newMycollectionEInIns<E> implements Iterable<E>{
     private class Node {
         
         Node next; // property is the variable of the class
-        Node prior;
+      
         E data; // property is the variable of the class
         
     }
@@ -65,29 +65,28 @@ public class newMycollectionEInIns<E> implements Iterable<E>{
 
     // remove method
     public void remove(E element){
-
-        Node current = head;
-
-        while(current.next!=null){
-            // if haead has the data we want to remove
-            // removing the first one: node(this one gets removed) - current - node
-            if(current.data = element){
-                current.next= current;
-            }// removing the second one:  node -(deleting the link here)- node(removed) - node 
-            else if(current.next.data == element){
-                current.next = current.next.next;
+        // checking first
+        if(element == head.data){
+            if(head.next != null){
+                head = head.next;
+            }else{
+                head = null;
             }
-            // removing anhything else
-            // node - node - node (removing this)- node- node
-            else if(current.next.next.data == element){
-                eleminate = current.next.next;
-                current.next = eleminate.next;
-            }
+            return; 
         }
-        // if we want to remove the last node
-        if(current.next.next==null && current.data == element){
-            current.next = null;
+
+        // after the first node
+        while(current.data!=element){ 
+            previous = current;
+            current= current.next;
         }
+        if(current != null){
+            previous.next = current.next;
+        }else{
+            previous.next = null;
+        }
+        
+       
     }
 
     
