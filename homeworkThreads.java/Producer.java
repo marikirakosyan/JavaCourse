@@ -12,27 +12,40 @@ public class Producer implements Runnable{
 
     public boolean capacity(){
         if(items.size() >= capacity){
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     // It should wait when list.size is at capacity. 
     // Don’t forget about adding synchronized (items) block
-    public synchronized void produce() throws InterruptedException {
+    public void produce() throws InterruptedException {
         int value = 0;
-        while (capacity() != false) {
+        while (true){
+            synchronized(items){
+            while (capacity()== true) {
+                items.wait(); // why not wait();?
+            }
+
             System.out.println("Producer produced - " + value);
-            items.add(value++);
+                    items.add(value++);
+            
             // After adding in a list it should notify consumer.
-            notifyAll();
+            items.notifyAll();
+            
+            }
+            
+            
             Thread.sleep(1000);
+            
         }
-        wait();
+
+    
         
     }
 
 
+    // The producer thread calls producer.produce() method.
     @Override
     public void run(){
         try {

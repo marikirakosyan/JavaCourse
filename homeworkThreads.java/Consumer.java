@@ -16,18 +16,28 @@ public class Consumer implements Runnable {
     }
 
     // Don’t forget adding synchronized (items) block
-    public synchronized void consume() throws InterruptedException {
-        // It should wait when list is empty
-        while (this.isEmpty() == false) {
-            int val = items.removeFirst();
-            // After consuming it should notify producer
-            notifyAll();
-            System.out.println("Consumer consumed - " + val);
-            Thread.sleep(1000);
+    public void consume() throws InterruptedException {
+        while (true){
+        synchronized(items){
+            // It should wait when list is empty
+            // list is nogt empty
+            while (this.isEmpty() == true) {
+                items.wait();
+                
+            }
+        int val = items.removeFirst();
+        System.out.println("Consumer consumed - " + val);
+        // After consuming it should notify producer
+        items.notifyAll();
+        
         }
-        wait();
+        Thread.sleep(1000);
+   
+    }
+    
     }
 
+    // The consumer thread calls consumer.consume() method.
     @Override
     public void run(){
         try {
