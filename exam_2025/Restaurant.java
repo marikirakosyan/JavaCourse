@@ -57,28 +57,34 @@ public class Restaurant {
 
     */
 
-    public void threadsRecieveGuest(GuestGroup group)throws InterruptedException{
+    public synchronized Table threadsRecieveGuest(GuestGroup group)throws InterruptedException{
         // if not any tables available with enough spots
+        Table table = null;
         for(Table t: resTables){
-            synchronized(t){
+            
             while(((t.inUse) || group.size()>t.seats) ){
                 // not enough seats at table - condition
-                t.wait(); // jumps out of synchronized??
-
+                wait(); // // it should wait until table is available
             }
-            t.inUse = true;
-            t.notifyAll();
+            Thread.sleep(1000);
             
-        
-            }
-        Thread.sleep(1000);
+            t.inUse = true;
+            // suitable table
+            t.notifyAll();
+            table = t;
+
+            
+
         }
+        
+        return table;
         
     }
 
     public void releaseTable(Table table){
         table.inUse = false;
         table.gg = null;
+        table.notifyAll();
 
     }
 

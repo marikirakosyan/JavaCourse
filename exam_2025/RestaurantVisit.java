@@ -5,7 +5,7 @@ public class RestaurantVisit implements Runnable {
     GuestGroup gg;
     Table t;
     // registers that table is empty
-    public RestaurantVisit(Restaurant r, GuestGroup g){
+    public RestaurantVisit(Restaurant r, GuestGroup gg){
         this.r = r;
         this.gg = gg;
         
@@ -14,9 +14,9 @@ public class RestaurantVisit implements Runnable {
     @Override
     public void run() {
        try {
-        r.threadsRecieveGuest(gg);
+        Table t = r.threadsRecieveGuest(gg);
         //gg.eat;
-        r.releaseTable(); // how should i add the table
+        r.releaseTable(t); // how should i add the table
        } catch (InterruptedException e) {
         e.printStackTrace();
        }
