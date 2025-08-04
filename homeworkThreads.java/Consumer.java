@@ -21,7 +21,7 @@ public class Consumer implements Runnable {
         synchronized(items){
             // It should wait when list is empty
             // list is nogt empty
-            while (this.isEmpty() == true) {
+            if (this.isEmpty() == true) {
                 items.wait();
                 
             }
@@ -29,9 +29,11 @@ public class Consumer implements Runnable {
         System.out.println("Consumer consumed - " + val);
         // After consuming it should notify producer
         items.notifyAll();
+
+        Thread.sleep(1000);
         
         }
-        Thread.sleep(1000);
+        
    
     }
     

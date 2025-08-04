@@ -2,19 +2,15 @@ package homeworkThreads;
 
 import java.util.LinkedList;
 
-public class Main implements Runnable{
+public class Main {
 
     public static void main(String[] args) {
 
         // Create a new LinkedList in main method
         LinkedList<Integer> linkedList = new LinkedList<>();
         // making 
-        linkedList.add(100);
-        linkedList.add(50);
-        linkedList.add(20);
-        linkedList.add(10);
-        linkedList.add(2);
-
+        
+        
         System.out.println(linkedList);
         
 
@@ -33,11 +29,6 @@ public class Main implements Runnable{
         pT.start();
         
 
-    }
-
-    @Override
-    public void run(){
-        System.out.println("This code is running in a thread");
     }
 
 

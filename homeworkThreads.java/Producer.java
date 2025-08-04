@@ -23,8 +23,8 @@ public class Producer implements Runnable{
         int value = 0;
         while (true){
             synchronized(items){
-            while (capacity()== true) {
-                items.wait(); // why not wait();?
+            if (capacity()) {
+                items.wait(); 
             }
 
             System.out.println("Producer produced - " + value);
@@ -32,11 +32,13 @@ public class Producer implements Runnable{
             
             // After adding in a list it should notify consumer.
             items.notifyAll();
-            
+
+            // sync out or wait
+            Thread.sleep(1000);
+
             }
             
-            
-            Thread.sleep(1000);
+       
             
         }
 
