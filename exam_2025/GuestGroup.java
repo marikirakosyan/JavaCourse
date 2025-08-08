@@ -16,14 +16,13 @@ public class GuestGroup {
         return false;
     }
 
-    public Integer size(){
-        int size = 0;
-        for(Guest g: guests){
-            if(g!= null){
-                size++;
-            }
-        }
-        return size;
+    public int size(){
+        return guests.count();
+    }
+
+    public void eat() throws InterruptedException{
+        System.out.println("eating...");
+        Thread.sleep(1000);
     }
 }
 

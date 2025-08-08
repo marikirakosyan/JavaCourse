@@ -7,7 +7,7 @@ public class myCollection<E> implements Iterable<E>{ // iterable lets you write 
     // inner class is a class in the class that only is seen in current class, only known in this scope
     
 
-    private Node head;
+    private Node first;
 
 
     public myCollection(int n) { 
@@ -15,13 +15,13 @@ public class myCollection<E> implements Iterable<E>{ // iterable lets you write 
 
         // we need to make list with n nodes with nodes with reference to null
 
-        // when we put head in cuntructor as new we know that it will never be null
-        head = new Node(); // head needs to be first
+        // when we put first in cuntructor as new we know that it will never be null
+        first = new Node(); // first needs to be first
         
-        Node current = head; // we start with this, local variable
+        Node current = first; // we start with this, local variable
 
         // testing
-        //System.out.println("head is: " + head);
+        //System.out.println("first is: " + first);
 
 
         for(int i = 0; i<n; i++){ // we get 10 elements
@@ -51,7 +51,7 @@ public class myCollection<E> implements Iterable<E>{ // iterable lets you write 
 
     public boolean space(){
 
-        Node current = head;
+        Node current = first;
 
         while(current.next != null){
             if(current.data == null){ // if empty we count, then if has space - true, else false
@@ -74,7 +74,7 @@ public class myCollection<E> implements Iterable<E>{ // iterable lets you write 
         // find first node where data is null and change data to newElement
         // we now want to not allow instertion if no space
 
-        Node current = head;
+        Node current = first;
 
         if(current != null){ // checking if the node exicts
             if(this.space()){
@@ -98,7 +98,7 @@ public class myCollection<E> implements Iterable<E>{ // iterable lets you write 
 
     //
     public insertOnIndex(E ref, int n){
-        Node current = head;
+        Node current = first;
         int counter= 0;
 
         for(E :myCollection){
@@ -113,7 +113,7 @@ public class myCollection<E> implements Iterable<E>{ // iterable lets you write 
 
         // starting with iterating over each node , checking the element if it matches ref
 
-        Node current = head;
+        Node current = first;
 
         while(current.next != null){
             if( current.data!=null && current.data.equals(ref)){ // we put != null first to avoid nullpointerexpetrion while checking current.data.equals(ref) 
@@ -132,7 +132,7 @@ public class myCollection<E> implements Iterable<E>{ // iterable lets you write 
     public int count(){
         // we make the recursion with nodes, the nodes will be arguments for recursive method
 
-        return recursiveCount(head);
+        return recursiveCount(first);
 
     }
 
@@ -161,7 +161,7 @@ public class myCollection<E> implements Iterable<E>{ // iterable lets you write 
     public void printCount(){
         // print amount of nodes
         int counter = 0;
-        Node current = head;
+        Node current = first;
         
         while (current.next != null){
             counter++;
@@ -174,7 +174,7 @@ public class myCollection<E> implements Iterable<E>{ // iterable lets you write 
     public void print(){
         // printing the data where element is not null
 
-        Node current = head;
+        Node current = first;
 
         while(current.next != null){
             if(current.data != null){
@@ -192,15 +192,15 @@ public class myCollection<E> implements Iterable<E>{ // iterable lets you write 
     private class myIterator implements Iterator<E>{ // itertor for next and has next
 
 
-        // temporary variable that holds head to use to iteratte, we dont want to change head
+        // temporary variable that holds first to use to iteratte, we dont want to change first
         // we have to change temporrary variable
 
         // it starts on the first
-        Node temp = head;
+        Node temp = first;
 
         // need to override has next and next
 
-        // first - temp - head -> can be null therfore hasNext must check temp - and not temp.next
+        // first - temp - first -> can be null therfore hasNext must check temp - and not temp.next
 
 
         // override second
